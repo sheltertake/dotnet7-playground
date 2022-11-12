@@ -1,13 +1,11 @@
 
 
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Net.WebSockets;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.WebHost.ConfigureKestrel(opts =>
-{
-    opts.ConfigureEndpointDefaults(o => o.Protocols = Microsoft.AspNetCore.Server.Kestrel.Core.HttpProtocols.Http1AndHttp2AndHttp3);
-});
+    opts.ConfigureEndpointDefaults(o => o.Protocols = HttpProtocols.Http1AndHttp2AndHttp3));
 
 var app = builder.Build();
 
